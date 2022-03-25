@@ -1,13 +1,12 @@
 import React from 'react';
 import './App.scss';
-import svgIcons from './img/icons.svg'
+import Auth from "./components/auth/Auth";
 
 function App() {
   return (
-    <div className="App">
-        <svg width={100} height={100}>
-          <use xlinkHref={`${svgIcons}#arrow`}/>
-        </svg>
+    <div className="app">
+        <div className="login"><Auth/></div>
+        <div className='content'></div>
     </div>
   );
 }

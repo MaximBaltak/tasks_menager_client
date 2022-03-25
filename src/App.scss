@@ -1,1 +1,14 @@
-
+.app{
+  height: 100%;
+  display: grid;
+  grid-template-columns: 570px 1fr;
+  grid-template-areas: "aside content";
+}
+.login{
+  grid-area: aside;
+}
+.content{
+  grid-area:content;
+}
+$color1:#051021;
+$color2: #D75959;

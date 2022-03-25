@@ -1,0 +1,35 @@
+@import './../../App';
+.form{
+  padding-top: 206px;
+  margin: 0 auto ;
+  padding-bottom: 30px;
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  flex-flow: column;
+  width:205px;
+  .title{
+    font-weight: 700;
+    font-size: 25px;
+    text-align: center;
+    color: #FFFFFF;
+  }
+  .wrapper{
+    margin-bottom:30px;
+  }
+  .buttonSmall{
+    display:block;
+    outline:none;
+    border: none;
+    background: none;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: $color2;
+    transition: all .2s;
+    cursor: pointer;
+    &:hover{
+      transform: scale(1.2);
+    }
+  }
+}
