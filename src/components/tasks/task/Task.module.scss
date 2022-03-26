@@ -1,0 +1,46 @@
+@import './../../../App';
+.task{
+  display: flex;
+  justify-content:space-around;
+  align-items:center;
+  width:100%;
+  height: 62px;
+  border-bottom: solid 1px $color1;
+    .input{
+      display:none;
+    }
+    .userCheckbox{
+      cursor:pointer;
+      display:block;
+      width: 19px;
+      height: 19px;
+      background: #00C1EB;
+      border-radius:200%;
+    }
+  input:checked+.userCheckbox{
+    background:#05EB00;
+  }
+  .title{
+    width: 149px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+    color: $color1;
+  }
+  .delete{
+    cursor:pointer;
+    outline:none;
+    display:block;
+    border:none;
+    background: none;
+    svg{
+      stroke: #D75959;
+      transition: all .2s
+    }
+    &:hover>svg{
+      stroke: #6e2c2c;
+    }
+  }
+}

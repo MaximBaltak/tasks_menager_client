@@ -3,7 +3,7 @@
     <path d="M4 14H48M4 14L16.0548 2M4 14L16.0548 26" stroke="#051021" stroke-width="5"/>
 </symbol>
 <symbol id="delete">
-    <line x1="14.0941" y1="1.41108" x2="1.41108" y2="15.9059" stroke="#D75959" stroke-width="2" stroke-linecap="round"/>
-    <line x1="13.5933" y1="15.8545" x2="1.85448" y2="1.40671" stroke="#D75959" stroke-width="2" stroke-linecap="round"/>
+    <line x1="14.0941" y1="1.41108" x2="1.41108" y2="15.9059"  stroke-width="2" stroke-linecap="round"/>
+    <line x1="13.5933" y1="15.8545" x2="1.85448" y2="1.40671"  stroke-width="2" stroke-linecap="round"/>
 </symbol>
 </svg>

@@ -1,0 +1,13 @@
+@import './../../App';
+.title{
+  margin:0;
+  text-align: center;
+  font-weight: 700;
+  font-size: 48px;
+  .spanColor1{
+    color: $color2
+  }
+  .spanColor2{
+    color: $color1
+  }
+}
