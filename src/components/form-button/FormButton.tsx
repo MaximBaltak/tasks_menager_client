@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './FormButton.module.scss'
 interface IProps{
-    onClick:()=>void,
+    onClick:(e:React.FormEvent<HTMLButtonElement>)=>void,
     text:string,
 }
 const FormButton:React.FC<IProps> = ({onClick,text}) =>
