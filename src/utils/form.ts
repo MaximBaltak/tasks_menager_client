@@ -3,7 +3,7 @@ import {formToggle, IForm} from "../store/slices/authorization-slice/types"
 import {AppDispatch} from "../store/store"
 import {asyncSignIn, asyncSignUp, exit, toggle} from "../store/slices/authorization-slice/authorization-slice";
 
-export const onSubmit=(type:IForm,dispatch:AppDispatch,e:React.FormEvent<HTMLButtonElement>)=>{
+export const form=(type:IForm, dispatch:AppDispatch, e:React.FormEvent<HTMLButtonElement>)=>{
     e.preventDefault();
     if(type===formToggle.SIGN_UP){
         dispatch(asyncSignUp())

@@ -3,7 +3,7 @@ import styles from './Form.module.scss'
 import FormInput from "../form-input/FormInput";
 import FormButton from "../form-button/FormButton";
 import {formToggle, IForm} from "../../store/slices/authorization-slice/types";
-import {onSubmit, onToggleForm} from "../../utils/on-submit";
+import {form, onToggleForm} from "../../utils/form";
 import {Dispatch} from "../../store/store";
 interface IProps{
     typeForm:IForm,
@@ -16,7 +16,7 @@ const Form:React.FC<IProps> = ({typeForm,
     const dispatch=Dispatch()
     return <form className={styles.form}>
         {typeForm===formToggle.EXIT? <FormButton
-                onClick={e=>onSubmit(formToggle.EXIT,dispatch,e)} text='Выйти'/>:
+                onClick={e=>form(formToggle.EXIT,dispatch,e)} text='Выйти'/>:
         typeForm===formToggle.SIGN_UP?
             <>
             <h2 className={styles.title}>Рагистрация</h2>
@@ -28,11 +28,11 @@ const Form:React.FC<IProps> = ({typeForm,
             </div>
             <div className={styles.wrapper}>
             <FormButton
-                onClick={e=>onSubmit(formToggle.SIGN_UP,dispatch,e)}
+                onClick={e=>form(formToggle.SIGN_UP,dispatch,e)}
                 text='Зарегистрироваться'/>
             </div>
             <button className={styles.buttonSmall}
-                    onClick={e=>onToggleForm(formToggle.SIGN_IN, dispatch,e)}>Зарегистрироваться?</button>
+                    onClick={e=>onToggleForm(formToggle.SIGN_IN, dispatch,e)}>Войти?</button>
             </>:
             <>
                 <h2 className={styles.title}>Вход</h2>
@@ -43,11 +43,11 @@ const Form:React.FC<IProps> = ({typeForm,
                     <FormInput value={password} type='password'/>
                 </div>
                 <div className={styles.wrapper}>
-                    <FormButton onClick={e=>onSubmit(formToggle.SIGN_IN,dispatch,e)}
+                    <FormButton onClick={e=>form(formToggle.SIGN_IN,dispatch,e)}
                                 text='Войти'/>
                 </div>
                 <button className={styles.buttonSmall}
-                        onClick={e=>onToggleForm(formToggle.SIGN_UP, dispatch,e)}>Войти?</button>
+                        onClick={e=>onToggleForm(formToggle.SIGN_UP, dispatch,e)}>Зарегистрироваться?</button>
             </>
         }
     </form>
