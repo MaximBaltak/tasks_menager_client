@@ -10,5 +10,6 @@ const mapStateToProps = (state:RootState)=>{
         error:state.authorization.error,
     }
 }
+
 const AuthContainer=connect(mapStateToProps)(Auth)
 export default AuthContainer

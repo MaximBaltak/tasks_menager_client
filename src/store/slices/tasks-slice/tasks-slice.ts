@@ -33,7 +33,8 @@ export const deleteTaskAsyncId =createAsyncThunk(
 )
 const initialState:ITasksState={
     titleInput:'',
-    tasks:[]
+    tasks:[],
+    isRequestTasks:false
 }
 const tasksSlice=createSlice({
     name:'tasks',

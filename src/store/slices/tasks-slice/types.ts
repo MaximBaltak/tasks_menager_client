@@ -7,4 +7,5 @@ export interface ITask{
 export interface ITasksState{
     titleInput:string,
     tasks:ITask[],
+    isRequestTasks:boolean
 }
