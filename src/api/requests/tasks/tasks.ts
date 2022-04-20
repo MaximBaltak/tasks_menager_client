@@ -1,5 +1,5 @@
-import axiosConfig from "./../../axios.config"
-import {IAddTaskBody, ITasksRequests} from "./types";
+import {axiosConfig} from "../../axios.config"
+import {IAddTaskBody, ITasksRequests, IUpdateTaskBody} from "./types";
 class TasksRequests implements ITasksRequests{
 
     addTask(body: IAddTaskBody): Promise<any> {
@@ -15,7 +15,7 @@ class TasksRequests implements ITasksRequests{
         return axiosConfig.get('tasks');
     }
 
-    updateTask(body: IAddTaskBody): Promise<any> {
+    updateTask(body: IUpdateTaskBody): Promise<any> {
         return axiosConfig.put('tasks', body);
     }
 

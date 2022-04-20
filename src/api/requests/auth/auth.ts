@@ -1,5 +1,5 @@
 import {IAuthRequests, IRefreshTokenBody, IUserAuthBody} from "./types";
-import axiosConfig from "./../../axios.config"
+import {axiosConfig} from "../../axios.config"
 class AuthRequests implements IAuthRequests{
    public auth(body: IUserAuthBody): Promise<any> {
         return axiosConfig.post('auth/signin', body)

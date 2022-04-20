@@ -13,13 +13,13 @@ export interface IAdd{
     (dispatch:AppDispatch):void
 }
 export interface IUpdate{
-    (id:string,dispatch:AppDispatch):void
+    (id:number,dispatch:AppDispatch):void
 }
 export interface IDeleteAll{
     (dispatch:AppDispatch):void
 }
 export interface IDeleteId{
-    (id:string,dispatch:AppDispatch):void
+    (id:number,dispatch:AppDispatch):void
 }
 export const add:IAdd=(dispatch)=>{
     dispatch(addTask())

@@ -4,7 +4,7 @@ import FormInput from "../form-input/FormInput";
 import FormButton from "../form-button/FormButton";
 import {formToggle, IForm} from "../../store/slices/authorization-slice/types";
 import {form, onToggleForm} from "../../utils/form";
-import {Dispatch} from "../../store/store";
+import {Dispatch, Selector} from "../../store/store";
 interface IProps{
     typeForm:IForm,
     login:string,
@@ -13,9 +13,10 @@ interface IProps{
 }
 const Form:React.FC<IProps> = ({typeForm,
                                    login,password,error}) => {
+    const auth:boolean=Selector(state=>state.authorization.auth)
     const dispatch=Dispatch()
     return <form className={styles.form}>
-        {typeForm===formToggle.EXIT? <FormButton
+        {typeForm===formToggle.EXIT|| auth? <FormButton
                 onClick={e=>form(formToggle.EXIT,dispatch,e)} text='Выйти'/>:
         typeForm===formToggle.SIGN_UP?
             <>

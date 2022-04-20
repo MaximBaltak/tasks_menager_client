@@ -14,9 +14,11 @@ function App() {
         setInterval(()=>{
             if(!localStorage.getItem('access_token')){
                 dispatch(toggleAuth(false))
+            }else{
+                dispatch(toggleAuth(true))
             }
         },500)
-    },[])
+    })
   return (
     <div className="app">
         <div className="login"><AuthContainer/></div>

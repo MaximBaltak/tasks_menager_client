@@ -16,9 +16,10 @@ const Task: React.FC<IProps> = ({task}) => {
             <div>
                 <input className={styles.input}
                        type="checkbox"
-                       onClick={() => update(task.id, dispatch)}
-                       id={task.id}/>
-                <label className={styles.userCheckbox} htmlFor={task.id}/>
+                       checked={task.done}
+                       onChange={() => update(task.id, dispatch)}
+                       id={task.id.toString()}/>
+                <label className={styles.userCheckbox} htmlFor={task.id.toString()}/>
             </div>
             <h2 style={{textDecoration: task.done ? 'line-through' : 'none'}} className={styles.title}>{task.title}</h2>
             <button onClick={() => deleteId(task.id, dispatch)} className={styles.delete}>
