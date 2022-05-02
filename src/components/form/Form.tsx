@@ -20,6 +20,7 @@ const Form:React.FC<IProps> = ({typeForm,
                 onClick={e=>form(formToggle.EXIT,dispatch,e)} text='Выйти'/>:
         typeForm===formToggle.SIGN_UP?
             <>
+            {error?<p className={styles.error}>{error}</p>:null}
             <h2 className={styles.title}>Рагистрация</h2>
             <div className={styles.wrapper}>
             <FormInput value={login} type='text'/>
@@ -36,6 +37,7 @@ const Form:React.FC<IProps> = ({typeForm,
                     onClick={e=>onToggleForm(formToggle.SIGN_IN, dispatch,e)}>Войти?</button>
             </>:
             <>
+                {error?<p className={styles.error}>{error}</p>:null}
                 <h2 className={styles.title}>Вход</h2>
                 <div className={styles.wrapper}>
                     <FormInput value={login} type='text'/>

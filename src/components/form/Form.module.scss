@@ -32,4 +32,11 @@
       transform: scale(1.2);
     }
   }
+  .error{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: $color2;
+    text-align: center;
+  }
 }

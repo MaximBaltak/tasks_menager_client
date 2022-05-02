@@ -9,7 +9,7 @@ export const asyncSignIn = createAsyncThunk(
     async (_, thunkAPI) => {
         const state = (thunkAPI.getState() as RootState).authorization;
         if (!state.login || !state.password) {
-            thunkAPI.rejectWithValue('поля не должны быть пустыми')
+            return thunkAPI.rejectWithValue('поля не должны быть пустыми')
         } else {
             try {
                 const body: IUserAuthBody = {
@@ -19,18 +19,18 @@ export const asyncSignIn = createAsyncThunk(
                 const {data} = await AuthRequests.auth(body)
                 return data
             } catch (e) {
-                // @ts-ignore
-                thunkAPI.rejectWithValue(e)
+               // @ts-ignore
+                return thunkAPI.rejectWithValue(e?.response?.data?.message)
             }
         }
     }
 )
 export const asyncSignUp = createAsyncThunk(
-    'authorization/asyncSignUP',
+    'authorization/asyncSignUp',
     async (_, thunkAPI) => {
         const state = (thunkAPI.getState() as RootState).authorization;
         if (!state.login || !state.password) {
-            thunkAPI.rejectWithValue('поля не должны быть пустыми')
+             return thunkAPI.rejectWithValue('поля не должны быть пустыми')
         } else {
             try {
                 const body: IUserAuthBody = {
@@ -41,7 +41,7 @@ export const asyncSignUp = createAsyncThunk(
                 return data
             } catch (e) {
                 // @ts-ignore
-                thunkAPI.rejectWithValue(e.body.message)
+               return thunkAPI.rejectWithValue(e?.response?.data?.message)
             }
         }
 
@@ -60,7 +60,7 @@ export const asyncUpdateRefreshToken = createAsyncThunk(
             return data
         } catch (e) {
             // @ts-ignore
-            thunkAPI.rejectWithValue(e.body.message)
+            return thunkAPI.rejectWithValue(e?.response?.data?.message)
         }
     }
 )
@@ -95,6 +95,7 @@ const authorizationSlice = createSlice({
         exit: state => {
             localStorage.clear()
             state.auth = false
+            state.typeForm = formToggle.SIGN_UP
         },
         toggleAuth: (state, action: PayloadAction<boolean>) => {
             state.auth = action.payload
@@ -106,34 +107,35 @@ const authorizationSlice = createSlice({
             localStorage.setItem('refresh_token', JSON.stringify(action.payload.refreshToken))
             localStorage.setItem('time_access_token', JSON.stringify(action.payload.expiresIn))
             localStorage.setItem('create_date_access_token', JSON.stringify(action.payload.access_createDate))
-            console.log(action.payload)
             state.login = ''
             state.password = ''
             state.error = ''
             state.auth = true
+            state.typeForm = formToggle.EXIT
         },
         [asyncSignUp.rejected.type]: (state, action: PayloadAction<any>) => {
             state.login = ''
             state.password = ''
-            console.log(action.payload)
+            state.error = action.payload
+            state.auth = false
+            state.typeForm = formToggle.SIGN_UP
         },
         [asyncSignIn.fulfilled.type]: (state, action: PayloadAction<any>) => {
             localStorage.setItem('access_token', JSON.stringify(action.payload.accessToken))
             localStorage.setItem('refresh_token', JSON.stringify(action.payload.refreshToken))
             localStorage.setItem('time_access_token', JSON.stringify(action.payload.access_expiresIn))
             localStorage.setItem('create_date_access_token', JSON.stringify(action.payload.access_createDate))
-            console.log(action.payload)
             state.login = ''
             state.password = ''
             state.error = ''
             state.auth = true
+            state.typeForm = formToggle.EXIT
         },
         [asyncUpdateRefreshToken.fulfilled.type]: (state, action: PayloadAction<any>) => {
             localStorage.setItem('access_token', JSON.stringify(action.payload.accessToken))
             localStorage.setItem('refresh_token', JSON.stringify(action.payload.refreshToken))
             localStorage.setItem('time_access_token', JSON.stringify(action.payload.access_expiresIn))
             localStorage.setItem('create_date_access_token', JSON.stringify(action.payload.access_createDate))
-            console.log(action.payload)
             state.login = ''
             state.password = ''
             state.error = ''
@@ -142,12 +144,16 @@ const authorizationSlice = createSlice({
         [asyncUpdateRefreshToken.rejected.type]: (state, action: PayloadAction<any>) => {
             state.login = ''
             state.password = ''
-            console.log(action.payload)
+            state.error = action.payload
+            state.auth = false
+            state.typeForm = formToggle.SIGN_UP
         },
         [asyncSignIn.rejected.type]: (state, action: PayloadAction<any>) => {
             state.login = ''
             state.password = ''
-            console.log(action.payload)
+            state.error = action.payload
+            state.auth = false
+            state.typeForm = formToggle.SIGN_IN
         },
     }
 })

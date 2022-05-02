@@ -11,7 +11,7 @@ export const getTasksAsync =createAsyncThunk(
             const {data}= await TasksRequests.getTasks()
             return data
         }catch (e){
-            rejectWithValue(e)
+            return rejectWithValue(e)
         }
     }
 )
@@ -30,7 +30,7 @@ async (_,{rejectWithValue,getState})=>{
             return data
         }
     }catch (e){
-        rejectWithValue(e)
+        return rejectWithValue(e)
     }
 }
 )
@@ -46,7 +46,7 @@ export const updateTaskAsync =createAsyncThunk(
             return data
 
         }catch (e){
-            rejectWithValue(e)
+            return rejectWithValue(e)
         }
     }
 )
@@ -58,7 +58,7 @@ export const deleteTasksAsync =createAsyncThunk(
             return data
 
         }catch (e){
-            rejectWithValue(e)
+           return rejectWithValue(e)
         }
     }
 )
@@ -70,7 +70,7 @@ export const deleteTaskAsyncId =createAsyncThunk(
             return data
 
         }catch (e){
-            rejectWithValue(e)
+           return rejectWithValue(e)
         }
     }
 )
@@ -89,7 +89,7 @@ const tasksSlice=createSlice({
         addTask:(state)=>{
            if(state.titleInput){
                const task:ITask={
-                   id:Math.floor(Math.random()*100),
+                   id:Math.random()*10000.87987,
                    title:state.titleInput,
                    done:false
                }

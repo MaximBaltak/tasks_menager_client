@@ -7,13 +7,10 @@ export const form=(type:IForm, dispatch:AppDispatch, e:React.FormEvent<HTMLButto
     e.preventDefault();
     if(type===formToggle.SIGN_UP){
         dispatch(asyncSignUp())
-        dispatch(toggle(formToggle.EXIT))
     }else if(type===formToggle.SIGN_IN) {
         dispatch(asyncSignIn())
-        dispatch(toggle(formToggle.EXIT))
     }else if(type===formToggle.EXIT) {
         dispatch(exit())
-        dispatch(toggle(formToggle.SIGN_UP))
     }
 
 }
